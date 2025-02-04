@@ -1,0 +1,8 @@
+#!/usr/sbin/nft -f
+
+# create the table netsec
+#   note that we don't need to use nft here, simple start the command.
+add table ip netsec_tbl
+
+# create our first chain for incoming traffic
+add chain netsec_tbl netsec_in { type filter hook prerouting priority 0 ; policy drop ; comment "our first netsec chain" ; }
